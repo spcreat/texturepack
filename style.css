@@ -1,0 +1,206 @@
+:root {
+  interpolate-size: allow-keywords;
+}
+
+@property --gradient-color-1 {
+  syntax: '<color>';
+  initial-value: magenta;
+  inherits: true;
+}
+
+@property --gradient-color-2 {
+  syntax: '<color>';
+  initial-value: magenta;
+  inherits: true;
+}
+
+@property --gradient-color-3 {
+  syntax: '<color>';
+  initial-value: magenta;
+  inherits: true;
+}
+
+.card-image {
+    height: auto;
+    opacity: 100%;
+    transition: height 0.5s ease, opacity 0.5s ease;
+}
+
+.card-image.is-collapsed {
+    height: 0;
+    opacity: 0%;
+}
+
+.toggle-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0px;
+    margin: 0px;
+    border-radius: 14px; 
+    overflow: hidden;
+
+    filter: brightness(40%);
+    transition: padding 250ms ease 0s, margin 250ms ease 0s, filter 500ms ease 0s;
+
+    --gradient-color-1: #3000ff;
+    --gradient-color-2: #00ccff;
+    --gradient-color-3: #00ff00;
+}
+
+.opacify {
+    animation: opacify 250ms linear;
+}
+
+.toggle-card.preset-card {
+    filter: brightness(60%);
+
+    --gradient-color-1: #ff3502;
+    --gradient-color-2: #ffff00;
+    --gradient-color-3: #ffffff;
+}
+
+.toggle-card:hover {
+    padding: 2px;
+    margin: -2px;
+    filter: brightness(80%);
+    cursor: pointer;
+}
+
+.toggle-card.toggled {
+    padding: 3px;
+    margin: -3px;
+    filter: brightness(100%);
+}
+
+.toggle-card::after {
+    content: "";
+    display: block;
+    background: linear-gradient(
+        90deg,
+        var(--gradient-color-1) 10%,
+        var(--gradient-color-2) 50%,
+        var(--gradient-color-3) 90%
+    );
+    height: 0;
+    width: 200%;
+    padding-bottom: 200%;
+    position: absolute;
+    animation: rotate 3s linear infinite, deopacify 250ms linear;
+    z-index: -1;
+    opacity: 0%;
+}
+
+.toggle-card.toggled::after {
+    content: "";
+    display: block;
+    background: linear-gradient(
+        90deg,
+        var(--gradient-color-1) 10%,
+        var(--gradient-color-2) 50%,
+        var(--gradient-color-3) 90%
+    );
+    height: 0;
+    width: 200%;
+    padding-bottom: 200%;
+    position: absolute;
+    animation: rotate 3s linear infinite, opacify 250ms linear;
+    z-index: -1;
+    opacity: 100%;
+}
+
+.page-bottom::before {
+    content: "";
+    display: block;
+    background: linear-gradient(
+        180deg,
+        #00000000 0%,
+        #040507 100%
+    );
+    height: 150px;
+    width: 200%;
+    position: absolute;
+    bottom:0;
+    left:0;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes opacify {
+    from {
+        opacity: 0%;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+
+@keyframes deopacify {
+    from {
+        opacity: 100%;
+    }
+
+    to {
+        opacity: 0%;
+    }
+}
+
+.button.download-button {
+    width: 250px;
+    color: black;
+
+    --gradient-color-1: #3000ff;
+    --gradient-color-2: #00ccff;
+    --gradient-color-3: #00ff00;
+
+    background: linear-gradient(
+        90deg,
+        var(--gradient-color-1),
+        var(--gradient-color-2),
+        var(--gradient-color-3),
+        var(--gradient-color-2),
+        var(--gradient-color-1)
+    );
+
+    background-size: 200% 100%;
+    background-position: 0% 0;
+
+    animation: scroll 2s linear infinite;
+    transition: --gradient-color-1 .5s, --gradient-color-2 .5s, --gradient-color-3 .5s;
+}
+
+.button.download-button:hover {
+    --gradient-color-1: #ff6e02;
+    --gradient-color-2: #ffff00;
+    --gradient-color-3: #ffffff;
+}
+
+@keyframes scroll {
+    from {
+        background-position: 0% 0;
+    }
+
+    to {
+        background-position: 200% 0;
+    }
+}
+
+/* lowkey stole this part from robtopgames.com 🥀 */
+iframe {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Ensures the iframe maintains 16:9 ratio */
+}

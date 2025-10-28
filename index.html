@@ -1,10 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="dark">
 <head>
-  <title>Texturepack</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Texture Pack</title>
+
+  <script type="text/javascript" src="jszip.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="icon" type="image/png" href="favicon.png" />
 </head>
 <body>
-  <h1>Some Heading</h1>
-  <p>Some text here</p>
+  <div class="page-wrap">
+
+    <section class="section">
+      <div class="container has-text-centered">
+        <img class="block" src="webcontent/logo.png" draggable="false"/>
+        <!--
+        <iframe width="640" height="360" class="block" src="https://www.youtube-nocookie.com/embed/jXUSZMOIVWc?si=jsZHsua3XuRkewgZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        -->
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container has-text-centered">
+        <p class="title is-2 is-spaced">Welcome!</p>
+        <p class="block subtitle is-5">Select one of the presets below to start building your pack!</p>
+
+        <div class="block columns is-centered">
+          <div class="column is-one-third">
+            <button class="toggle-card preset-card" data-preset="" data-presetreverse="true">
+              <div class="card">
+                <div class="card-image">
+                  <img src="webcontent/bg_0.png" draggable="false"/>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Everything</p>
+                      <p class="subtitle is-6">All the content the pack has to offer</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+
+          <div class="column is-one-third">
+            <button class="toggle-card preset-card" data-preset="0,0;0,2;0,3;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0" data-presetreverse="false">
+              <div class="card">
+                <div class="card-image">
+                  <img src="webcontent/bg_1.png" draggable="false"/>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Essentials</p>
+                      <p class="subtitle is-6">Only the main set of icons</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+
+          <div class="column is-one-third">
+            <button class="toggle-card preset-card" data-preset="" data-presetreverse="false">
+              <div class="card">
+                <div class="card-image">
+                  <img src="webcontent/bg_2.png" draggable="false"/>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">Blank Slate</p>
+                      <p class="subtitle is-6">Build your pack from the ground up</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="edit-section" class="section is-hidden" style="overflow: hidden; animation: opacify 500ms linear;">
+      <div class="container">
+        <p class="block title is-3 has-text-centered">Now, edit your pack however you'd like!</p>
+        <div id="tabs-selector" class="block tabs is-centered">
+          <ul>
+            
+          </ul>
+        </div>
+
+        <div id="tabs-content" class="block">
+
+        </div>
+      </div>
+      <section class="section">
+        <div class="block container has-text-centered">
+          <p class="block title is-3">Finally, download your custom pack!</p>
+
+          <button class="block button download-button has-text-weight-extrabold" onclick="GenerateZipDownload()">
+            Download
+          </button>
+        </div>
+        <div class="block container has-text-centered" style="max-width: 600px;">
+          <div class="block">
+            <p>Installation instructions:</p>
+          </div>
+          <div class="block">
+            <p><strong>Using geode's Texture Loader mod (recommended):</strong> On the main menu, open <strong>settings</strong>, then go to <strong>Graphics > Textures</strong> and press the <strong>folder icon</strong> on the bottom right. Put the zip file inside this folder, then, back in game, press the <strong>refresh button</strong> and the pack should show up! Move it over to the applied section, then click <strong>apply</strong> to confirm. After loading, your custom pack should be ready to use!</p>
+          </div>
+          <div class="block">
+            <p><strong>Manual install:</strong> You'll need to locate your game's installation directory. On steam, you can right click the game, then click <strong>Manage > Browse local files</strong>. From here, open the <strong>Resources</strong> folder, then unzip your download <strong>directly</strong> into this folder. When you try to do this, you should get a popup asking if you'd like to replace the files, and that means you're in the right place. Let it replace all the files, <strong>restart your game</strong>, and the pack should be ready to use!</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="section page-bottom" style="position:relative;">
+      <div class="content has-text-centered">
+        <p class="is-small">
+          <div style="color:#767e8f;">
+            Pack only supports "high" graphics option in GD. Feel free to tag me on my <a href="https://discord.gg/7vU7tUcRcx" target="_blank">discord</a> if you need help!
+          </div>
+          <div style="color:#767e8f;">
+            Created by <a href="https://x.com/spcreat_">spcreat</a> • All original assets belong to <a href="http://robtopgames.com">RobTop Games</a>
+          </div>
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    populateItems();
+  </script>
 </body>
 </html> 
